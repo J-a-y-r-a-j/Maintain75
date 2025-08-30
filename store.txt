@@ -1,0 +1,6 @@
+||ATTENDANCE STORAGE||
+Subject: test2
+Theory Attendance: 66.7
+Lab Attendance: 78.0
+Tutorial Attendance: 85.0
+Overall Attendance:76.56666666666666
