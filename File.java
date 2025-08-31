@@ -1,36 +1,57 @@
 import java.io.*;
-public class File {
-    public static void main(String[] args) {
-        Subject test =  new Subject("test",66.7,78,85);
-        test.suboverallatt(test);
-        System.out.println(test.name);
-        String testnumber;
-        /*try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("store.txt"));
-            writer.write("||ATTENDANCE STORAGE||");
-            writer.write("\nSubject: "+test.name);
-            writer.write("\nTheory Attendance: "+test.theoryatt);
-            writer.write("\nLab Attendance: "+test.labatt);
-            writer.write("\nTutorial Attendance: "+test.tutatt);
-            writer.write("\nOverall Attendance:"+test.overallatt);
-            writer.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }*/
-
+import java.util.*;
+public class File{
+    void readfileattendance(Subject sub){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("store.txt"));
-            while((testnumber=reader.readLine()) != null){
-                if(testnumber.startsWith("Subject:")){
-                    String trimmed = testnumber.replace("Subject:","").trim();
-                    test.name = trimmed;
+            BufferedReader rd = new BufferedReader(new FileReader("attendancefile.txt"));
+            String line;
+            while((line = rd.readLine()) != null ){
+                if(line.startsWith("Subject = ")){
+                    String subname = line.replace("Subject = ","").trim();
+                    sub.name = subname;
+                }
+                if(line.startsWith("ThAtt = ")){
+                    String rdthatt = line.replace("ThAtt = ","").trim();
+                    Double thatt = Double.parseDouble(rdthatt);
+                    sub.theoryatt = thatt;
+                }
+                if(line.startsWith("LbAtt = ")){
+                    String rdlbatt = line.replace("LbAtt = ","").trim();
+                    Double lbatt = Double.parseDouble(rdlbatt);
+                    sub.labatt = lbatt;
+                }
+                if(line.startsWith("TuAtt = ")){
+                    String rdtuatt = line.replace("TuAtt = ","").trim();
+                    Double tuatt = Double.parseDouble(rdtuatt);
+                    sub.tutatt = tuatt;
+                }
+                if(line.startsWith("OvAtt = ")){
+                    String rdovatt = line.replace("TuAtt = ","").trim();
+                    Double ovatt = Double.parseDouble(rdovatt);
+                    sub.overallatt = ovatt;
                 }
 
             }
+            System.out.println(sub.name+" "+sub.theoryatt+" "+sub.labatt+" "+sub.tutatt+" "+sub.overallatt);
+
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
 
-        System.out.println(test.name);
+    void writefileattendance(Subject sub){
+        try{
+            BufferedWriter wr = new BufferedWriter( new FileWriter("attendancefile.txt",true));
+            BufferedReader rd = new BufferedReader(new FileReader("attendancefile.txt"));
+                wr.write("\n\nSubject = "+sub.name);
+                wr.write("\nThatt = "+sub.theoryatt);
+                wr.write("\nLbAtt = "+sub.labatt);
+                wr.write("\nTuAtt = "+sub.tutatt);
+                wr.write("\nOvAtt = "+sub.overallatt);
+            wr.close();
+        }catch(IOException d){
+            d.printStackTrace();
+        }
+
     }
 }

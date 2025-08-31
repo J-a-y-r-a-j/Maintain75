@@ -1,0 +1,10 @@
+Subject = DAA
+ThAtt = 84.62
+LbAtt = 87.5
+TuAtt = 50
+
+Subject = SDAM
+Thatt = 92.31
+LbAtt = 57.14
+TuAtt = 28.57
+OvAtt = 59.339999999999996
