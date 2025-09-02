@@ -12,27 +12,27 @@ public class File{
                 }
                 if(line.startsWith("ThAtt = ")){
                     String rdthatt = line.replace("ThAtt = ","").trim();
-                    Double thatt = Double.parseDouble(rdthatt);
-                    sub.theoryatt = thatt;
+                    //int thatt = Double.parseDouble(rdthatt);
+                    //sub.theoryatt = thatt;
                 }
                 if(line.startsWith("LbAtt = ")){
                     String rdlbatt = line.replace("LbAtt = ","").trim();
-                    Double lbatt = Double.parseDouble(rdlbatt);
-                    sub.labatt = lbatt;
+                    //Double lbatt = Double.parseDouble(rdlbatt);
+                    //sub.labatt = lbatt;
                 }
                 if(line.startsWith("TuAtt = ")){
                     String rdtuatt = line.replace("TuAtt = ","").trim();
-                    Double tuatt = Double.parseDouble(rdtuatt);
-                    sub.tutatt = tuatt;
+                    //Double tuatt = Double.parseDouble(rdtuatt);
+                    //sub.tutatt = tuatt;
                 }
                 if(line.startsWith("OvAtt = ")){
                     String rdovatt = line.replace("TuAtt = ","").trim();
                     Double ovatt = Double.parseDouble(rdovatt);
-                    sub.overallatt = ovatt;
+                    sub.ovrallatt = ovatt;
                 }
 
             }
-            System.out.println(sub.name+" "+sub.theoryatt+" "+sub.labatt+" "+sub.tutatt+" "+sub.overallatt);
+            System.out.println(sub.name+" "+sub.theoryatt+" "+sub.labatt+" "+sub.tutatt+" "+sub.ovrallatt);
 
         }catch(IOException e){
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class File{
                 wr.write("\nThatt = "+sub.theoryatt);
                 wr.write("\nLbAtt = "+sub.labatt);
                 wr.write("\nTuAtt = "+sub.tutatt);
-                wr.write("\nOvAtt = "+sub.overallatt);
+                wr.write("\nOvAtt = "+sub.ovrallatt);
             wr.close();
         }catch(IOException d){
             d.printStackTrace();

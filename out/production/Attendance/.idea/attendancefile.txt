@@ -1,4 +1,0 @@
-Subject = DAA
-ThAtt = 84.62
-LbAtt = 87.5
-TuAtt = 50

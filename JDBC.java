@@ -1,41 +1,39 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.InputStream;
+import java.io.Reader;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Map;
 
-public class JDBC
-{
-    public static void main(String[] args)
-    {
-        // NOTE: Connection and Statement are AutoCloseable.
-        //       Don't forget to close them both in order to avoid leaks.
-        try
-                (
-                        // create a database connection
-                        Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
-                        Statement statement = connection.createStatement();
-                )
-        {
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+public class JDBC{
+    ArrayList<Subject> subjects = new ArrayList<>();
+    void getallattendance(){
+        try{
+        Connection conn = null;
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
+        Statement stmt = conn.createStatement();
+        String get = "Select * from sheet";
+        ResultSet rs = stmt.executeQuery(get);
 
-            statement.executeUpdate("drop table if exists person");
-            statement.executeUpdate("create table person (id integer, name string)");
-            statement.executeUpdate("insert into person values(1, 'leo')");
-            statement.executeUpdate("insert into person values(2, 'yui')");
-            ResultSet rs = statement.executeQuery("select * from person");
-            while(rs.next())
-            {
-                // read the result set
-                System.out.println("name = " + rs.getString("name"));
-                System.out.println("id = " + rs.getInt("id"));
-            }
+        while(rs.next()){
+
+            Subject tempsub = new Subject();
+            tempsub.name = (rs.getString("subname"));
+            tempsub.theoryatt = (rs.getInt("theoryatt"));
+            tempsub.theorytot = (rs.getInt("theorytot"));
+            tempsub.labatt = (rs.getInt("labatt"));
+            tempsub.labtot = (rs.getInt("labtot"));
+            tempsub.tutatt = (rs.getInt("tutatt"));
+            tempsub.tuttot = (rs.getInt("tuttot"));
+            tempsub.ovrallatt = (rs.getDouble("ovrallatt"));
+            subjects.add(tempsub);
+            //System.out.println(tempsub.name+" "+tempsub.ovrallatt);
         }
-        catch(SQLException e)
-        {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            e.printStackTrace(System.err);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
