@@ -8,12 +8,13 @@ import java.util.Calendar;
 import java.util.Map;
 
 public class JDBC{
-    ArrayList<Subject> subjects = new ArrayList<>();
+    public ArrayList<Subject> subjects = new ArrayList<>();
     void getallattendance(){
         try{
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
         Statement stmt = conn.createStatement();
+        System.out.println("connection successful");
         String get = "Select * from sheet";
         ResultSet rs = stmt.executeQuery(get);
 
@@ -36,4 +37,5 @@ public class JDBC{
             throw new RuntimeException(e);
         }
     }
+
 }
