@@ -24,25 +24,21 @@ public class Subject {
 
     }
     Subject(){}
-    void calcsubatt(Subject sub){
-        //System.out.println(sub.name+" "+sub.theoryatt+" "+ sub.theorytot+" "+sub.labatt+" "+sub.labtot+" "+sub.tutatt+" "+sub.tuttot+" "+sub.ovrallatt);
-        double theorypercentage = Math.round(((double) sub.theoryatt / sub.theorytot) * 10000.0) / 100.0;
-        double labpercentage = Math.round(((double) sub.labatt / sub.labtot) * 10000.0) / 100.0;
-        double tutpercentage = Math.round(((double) sub.tutatt / sub.tuttot) * 10000.0) / 100.0;
-        sub.ovrallatt = Math.round((theorypercentage+labpercentage+tutpercentage)/3);
-        System.out.println("Theory Percentage "+theorypercentage);
-        System.out.println("Lab Percentage "+labpercentage);
-        System.out.println("Tut Percentage"+tutpercentage);
-        System.out.println("Overall Percentage "+ sub.ovrallatt);
+    double calcoverallatt(ArrayList<Subject> subjects){
+        Subject tempcn = subjects.get(0);
+        Subject tempdaa = subjects.get(2);
+        Subject tempsdam = subjects.get(1);
+        double overallatt = tempcn.theoryatt+tempcn.labatt+tempcn.tutatt+tempdaa.theoryatt+tempdaa.labatt+tempdaa.tutatt+tempsdam.theoryatt+tempsdam.labatt+tempsdam.tutatt;
+        double overalltot = tempcn.theorytot+tempcn.labtot+tempcn.tuttot+tempdaa.theorytot+tempdaa.labtot+tempdaa.tuttot+tempsdam.theorytot+tempsdam.labtot+tempsdam.tuttot;
+        System.out.println(overallatt+"/"+overalltot);
+        double overall = Math.round(((double) overallatt / overalltot) * 100 * 100.0) / 100.0;
+        return overall;
     }
     public void attendingday(ArrayList<Subject> subjects){
         LocalDate today = LocalDate.now();
-        JDBC jd = new JDBC();
-        System.out.println("Today"+today.getDayOfWeek());
-        DayOfWeek day = today.getDayOfWeek();
-        Day d2 = new Day();
+        System.out.println("Today is "+today.getDayOfWeek());
+        DayOfWeek day = DayOfWeek.FRIDAY;
         Subject temp;
-        System.out.println(jd.subjects);
         switch(day){
             case MONDAY:
                 temp = subjects.get(2);
@@ -64,7 +60,7 @@ public class Subject {
                 temp.theorytot++;
                 temp = subjects.get(1);
                 temp.theoryatt++;
-                temp.theorytot++;
+                break;
             case WEDNESDAY:
                 temp = subjects.get(1);
                 temp.theoryatt++;
@@ -75,6 +71,7 @@ public class Subject {
                 temp = subjects.get(0);
                 temp.labatt++;
                 temp.labtot++;
+                break;
             case FRIDAY:
                 temp = subjects.get(1);
                 temp.labatt++;
@@ -85,6 +82,48 @@ public class Subject {
                 temp = subjects.get(2);
                 temp.tutatt++;
                 temp.tuttot++;
+                break;
+        }
+    }
+
+    public void leaveday(ArrayList<Subject> subjects){
+        LocalDate today = LocalDate.now();
+        System.out.println("Today is "+today.getDayOfWeek());
+        DayOfWeek day = DayOfWeek.FRIDAY;
+        Subject temp;
+        switch(day) {
+            case MONDAY:
+                temp = subjects.get(2);
+                temp.theorytot++;
+                temp = subjects.get(0);
+                temp.theorytot++;
+                temp = subjects.get(2);
+                temp.labtot++;
+                break;
+            case TUESDAY:
+                temp = subjects.get(1);
+                temp.tuttot++;
+                temp = subjects.get(0);
+                temp.theorytot++;
+                temp = subjects.get(1);
+                temp.theorytot++;
+                break;
+            case WEDNESDAY:
+                temp = subjects.get(1);
+                temp.theorytot++;
+                temp = subjects.get(2);
+                temp.theorytot++;
+                temp = subjects.get(0);
+                temp.labtot++;
+                break;
+            case FRIDAY:
+                temp = subjects.get(1);
+                temp.labtot++;
+                temp = subjects.get(0);
+                temp.tuttot++;
+                temp = subjects.get(2);
+                temp.tuttot++;
+                break;
         }
     }
 }

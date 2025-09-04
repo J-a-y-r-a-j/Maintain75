@@ -8,13 +8,21 @@ import java.util.Calendar;
 import java.util.Map;
 
 public class JDBC{
-    public ArrayList<Subject> subjects = new ArrayList<>();
+    ArrayList<Subject> subjects = new ArrayList<>();
+
+    void fetchattendance(){
+        if(!subjects.isEmpty()){
+            subjects.clear();
+        }
+        getallattendance();
+    }
+
     void getallattendance(){
         try{
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
         Statement stmt = conn.createStatement();
-        System.out.println("connection successful");
+        System.out.println("db connection successful");
         String get = "Select * from sheet";
         ResultSet rs = stmt.executeQuery(get);
 
@@ -28,7 +36,6 @@ public class JDBC{
             tempsub.labtot = (rs.getInt("labtot"));
             tempsub.tutatt = (rs.getInt("tutatt"));
             tempsub.tuttot = (rs.getInt("tuttot"));
-            tempsub.ovrallatt = (rs.getDouble("ovrallatt"));
             subjects.add(tempsub);
             //System.out.println(tempsub.name+" "+tempsub.ovrallatt);
         }
@@ -37,5 +44,7 @@ public class JDBC{
             throw new RuntimeException(e);
         }
     }
+
+
 
 }
