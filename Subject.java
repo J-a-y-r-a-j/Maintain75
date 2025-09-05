@@ -34,10 +34,12 @@ public class Subject {
         double overall = Math.round(((double) overallatt / overalltot) * 100 * 100.0) / 100.0;
         return overall;
     }
-    public void attendingday(ArrayList<Subject> subjects){
+    public void attendingday(ArrayList<Subject> subjects, boolean pr){
         LocalDate today = LocalDate.now();
-        System.out.println("Today is "+today.getDayOfWeek());
-        DayOfWeek day = DayOfWeek.FRIDAY;
+        if(pr) {
+            System.out.println("Tommorow is " + today.getDayOfWeek().plus(3));
+        }
+        DayOfWeek day = today.getDayOfWeek().plus(3);
         Subject temp;
         switch(day){
             case MONDAY:
@@ -88,8 +90,7 @@ public class Subject {
 
     public void leaveday(ArrayList<Subject> subjects){
         LocalDate today = LocalDate.now();
-        System.out.println("Today is "+today.getDayOfWeek());
-        DayOfWeek day = DayOfWeek.FRIDAY;
+        DayOfWeek day = today.getDayOfWeek().plus(3);
         Subject temp;
         switch(day) {
             case MONDAY:

@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.math.BigDecimal;
@@ -22,7 +23,6 @@ public class JDBC{
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
         Statement stmt = conn.createStatement();
-        System.out.println("db connection successful");
         String get = "Select * from sheet";
         ResultSet rs = stmt.executeQuery(get);
 
@@ -43,6 +43,20 @@ public class JDBC{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    void writeallattendance()throws SQLException {
+        Connection conn = null;
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
+        Statement st = conn.createStatement();
+
+        for(int i =0;i<3;i++){
+            Subject temp = subjects.get(i);
+            System.out.println(temp.name+" "+temp.theoryatt+" "+temp.theorytot+" "+temp.labatt+" "+temp.labtot+" "+temp.tutatt+" "+temp.tuttot);
+            String update = "update sheet set theoryatt = "+temp.theoryatt+", theorytot = "+temp.theorytot+", labatt = "+temp.labatt+", labtot = "+ temp.labtot+", tutatt = "+ temp.tutatt+", tuttot = "+ temp.tuttot+"where id = "+(i+1);
+            st.execute(update);
+        }
+        System.out.println("Attendance Updated");
     }
 
 
