@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/./frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\jayra\\IdeaProjects\\untitled\\Maintain75\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\jayra\\IdeaProjects\\untitled\\Maintain75\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/target/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/target/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/jayra/IdeaProjects/untitled/Maintain75/./frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\jayra\\IdeaProjects\\untitled\\Maintain75\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
