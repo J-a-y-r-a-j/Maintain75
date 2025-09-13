@@ -40,7 +40,7 @@ public class JDBC{
         }
     }
 
-    void writeallattendance()throws SQLException {
+    void writeallattendance() throws SQLException {
         Connection conn = null;
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/attendancesheet","root","mysqlroot321");
         Statement st = conn.createStatement();

@@ -25,6 +25,15 @@ public class Subject {
 
     }
     Subject(){}
+    String sessionnumber(ArrayList<Subject> subjects){
+        Subject tempcn = subjects.get(0);
+        Subject tempdaa = subjects.get(2);
+        Subject tempsdam = subjects.get(1);
+        double overallatt = tempcn.theoryatt+tempcn.labatt+tempcn.tutatt+tempdaa.theoryatt+tempdaa.labatt+tempdaa.tutatt+tempsdam.theoryatt+tempsdam.labatt+tempsdam.tutatt;
+        double overalltot = tempcn.theorytot+tempcn.labtot+tempcn.tuttot+tempdaa.theorytot+tempdaa.labtot+tempdaa.tuttot+tempsdam.theorytot+tempsdam.labtot+tempsdam.tuttot;
+        String sessionnum = (overallatt+"/"+overalltot);
+        return sessionnum;
+    }
     double calcoverallatt(ArrayList<Subject> subjects){
         Subject tempcn = subjects.get(0);
         Subject tempdaa = subjects.get(2);
@@ -63,6 +72,7 @@ public class Subject {
                 temp.theorytot++;
                 temp = subjects.get(1);
                 temp.theoryatt++;
+                temp.theorytot++;
                 break;
             case WEDNESDAY:
                 temp = subjects.get(1);
