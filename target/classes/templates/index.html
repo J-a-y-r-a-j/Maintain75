@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Attendance Tracker</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-image: url('/images/attendancepill.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+        p {
+            font-size: 30px;
+            margin: 20px 0;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            border: 2px solid white;
+            background-color: transparent;
+            cursor: pointer;
+            position: absolute; /* you can now place buttons using top/left */
+        }
+        .blue {
+            color: blue;
+        }
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>IT IS <span th:text="${day}"></span></h1>
+
+<p>Current Attendance: <span th:text="${printovr}"></span></p>
+<p>Attendance If You Go: <span th:text="${printgoing}"></span></p>
+<p>Attendance If You Skip: <span th:text="${printleave}"></span></p>
+
+<form th:action="@{/going}" method="post">
+    <button type="submit" class="blue" style="top: 345px; left: 1058px;">Going</button>
+</form>
+
+<form th:action="@{/skipping}" method="post">
+    <button type="submit" class="red" style="top: 335px; left: 400px;">Skipping</button>
+</form>
+</body>
+</html>
