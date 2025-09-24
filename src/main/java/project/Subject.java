@@ -47,7 +47,7 @@ public class Subject {
     public void attendingday(ArrayList<Subject> subjects, boolean pr){
         LocalDate today = LocalDate.now();
         if(pr) {
-            System.out.println("Tommorow is " + today.getDayOfWeek());
+            System.out.println("Tommorow is " + today.getDayOfWeek().plus(1));
         }
         DayOfWeek day = today.getDayOfWeek();
         Subject temp;
