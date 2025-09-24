@@ -16,7 +16,7 @@ public class JDBC{
     void getallattendance(){
         try{
         Connection conn = null;
-        conn = DriverManager.getConnection("jdbc:mysql://mainline.proxy.rlwy.net:46537/attendancesheet","root","mysqlroot321");
+        conn = DriverManager.getConnection("jdbc:mysql://mainline.proxy.rlwy.net:46537/railway","root","mysqlroot321");
         Statement stmt = conn.createStatement();
         String get = "Select * from sheet";
         ResultSet rs = stmt.executeQuery(get);
